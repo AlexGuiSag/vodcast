@@ -1,0 +1,30 @@
+<h1>Listing Podcasts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Feed</th>
+      <th>Url</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for podcast <- @podcasts do %>
+    <tr>
+      <td><%= podcast.name %></td>
+      <td><%= podcast.feed %></td>
+      <td><%= podcast.url %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.podcast_path(@conn, :show, podcast) %></span>
+        <span><%= link "Edit", to: Routes.podcast_path(@conn, :edit, podcast) %></span>
+        <span><%= link "Delete", to: Routes.podcast_path(@conn, :delete, podcast), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Podcast", to: Routes.podcast_path(@conn, :new) %></span>

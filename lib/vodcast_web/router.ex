@@ -17,6 +17,7 @@ defmodule VodcastWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/podcasts", PodcastController
   end
 
   # Other scopes may use custom stacks.
