@@ -51,4 +51,5 @@ defmodule VodcastWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug VodcastWeb.Router
+  plug TrailingFormatPlug
 end
