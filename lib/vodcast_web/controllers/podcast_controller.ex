@@ -3,6 +3,7 @@ defmodule VodcastWeb.PodcastController do
 
   alias Vodcast.Content
   alias Vodcast.Content.Podcast
+  alias Vodcast.Content.Api
 
   def index(conn, _params) do
     podcasts = Content.list_podcasts()
@@ -15,8 +16,11 @@ defmodule VodcastWeb.PodcastController do
   end
 
   def create(conn, %{"podcast" => podcast_params}) do
+    remote_feed = Api.get_rssfeed(podcast_params["url"])
+    IO.inspect(remote_feed)
     case Content.create_podcast(podcast_params) do
       {:ok, podcast} ->
+
         conn
         |> put_flash(:info, "Podcast created successfully.")
         |> redirect(to: Routes.podcast_path(conn, :show, podcast))
