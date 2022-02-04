@@ -44,7 +44,7 @@ defmodule Vodcast.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:trailing_format_plug, "~>0.0.5"},
+      {:httpoison, "~> 1.8"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end
